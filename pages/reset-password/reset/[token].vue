@@ -6,24 +6,28 @@ import * as z from 'zod'
 
 definePageMeta({
   layout: 'auth',
+  validate: async ({ params }) => {
+    try {
+      // TODO: Validate token with API
+      // const token = params.token as string
+      // const valid = await $fetch(`/api/auth/reset-password/${token}`)
+      // return valid
+      return true
+    } catch (error) {
+      return false
+    }
+  },
 })
 
-const schema = z.object({
-  username: z
-    .string({
-      required_error: 'Username is required.',
-    })
-    .min(2, {
-      message: 'Username must be at least 2 characters.',
-    }),
-  password: z
-    .string({
-      required_error: 'Password is required.',
-    })
-    .min(8, {
-      message: 'Password must be at least 8 characters.',
-    }),
-})
+const schema = z
+  .object({
+    password: z.string(),
+    confirm: z.string(),
+  })
+  .refine((data) => data.password === data.confirm, {
+    message: 'Passwords must match.',
+    path: ['confirm'],
+  })
 
 const loading = ref(false)
 function onSubmit(values: Record<string, any>) {
@@ -32,7 +36,7 @@ function onSubmit(values: Record<string, any>) {
 
   setTimeout(() => {
     loading.value = false
-    useRouter().push({ name: 'index' })
+    useRouter().push({ name: 'login' })
   }, 1000)
 
   // toast('Event has been created', {
@@ -49,9 +53,9 @@ function onSubmit(values: Record<string, any>) {
   <div class="flex items-center justify-center py-12">
     <div class="mx-auto grid w-[350px] gap-6">
       <div class="grid gap-2 text-center">
-        <h1 class="text-3xl font-bold">Login</h1>
+        <h1 class="text-3xl font-bold">Reset Your Password</h1>
         <p class="text-balance text-muted-foreground">
-          Enter your email below to login to your account
+          Enter your new password below
         </p>
       </div>
       <AutoForm
@@ -64,21 +68,22 @@ function onSubmit(values: Record<string, any>) {
               placeholder: '••••••••',
             },
           },
+          confirm: {
+            description: 'The confirm password must match the password.',
+            inputProps: {
+              type: 'password',
+              placeholder: '••••••••',
+            },
+          },
         }"
         @submit="onSubmit"
       >
-        <div class="flex items-center">
-          <NuxtLink
-            :to="{ name: 'reset-password' }"
-            class="ml-auto inline-block text-sm underline"
-          >
-            Forgot your password?
-          </NuxtLink>
-        </div>
-
         <Button type="submit">
           <Spinner v-if="loading" class="mr-2" />
-          Login
+          Reset Password
+        </Button>
+        <Button variant="ghost" as-child>
+          <NuxtLink to="/login">Back</NuxtLink>
         </Button>
       </AutoForm>
     </div>

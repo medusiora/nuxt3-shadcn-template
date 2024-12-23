@@ -14,7 +14,7 @@
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["lucide", "shadcn"],
+  "cSpell.words": ["lucide", "shadcn", "sonner"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
