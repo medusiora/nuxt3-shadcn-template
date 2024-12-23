@@ -29,7 +29,7 @@ const data = {
   user: {
     name: 'shadcn',
     email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    avatar: '/avatars/01.png',
   },
   teams: [
     {
@@ -174,7 +174,7 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
                   class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                 >
                   <div
-                    class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                    class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
                   >
                     <component :is="activeTeam.logo" class="size-4" />
                   </div>
@@ -416,11 +416,11 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
           </Breadcrumb>
         </div>
 
-        <div class="flex items-center gap-2 px-4 ml-auto">
+        <div class="ml-auto flex items-center gap-2 px-4">
           <AppColorMode />
         </div>
       </header>
-      <div class="p-4 pt-0 min-h-[calc(100vh-64px)]">
+      <div class="min-h-[calc(100vh-64px)] p-4 pt-0">
         <slot />
       </div>
     </SidebarInset>
