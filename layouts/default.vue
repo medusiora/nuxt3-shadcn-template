@@ -3,160 +3,137 @@ import {
   AudioWaveform,
   BadgeCheck,
   Bell,
-  BookOpen,
-  Bot,
+  ChartArea,
   ChevronRight,
   ChevronsUpDown,
   Command,
   CreditCard,
-  Folder,
-  Forward,
-  Frame,
   GalleryVerticalEnd,
   LogOut,
-  Map,
-  MoreHorizontal,
+  Pen,
   PieChart,
   Plus,
   Settings2,
   Sparkles,
-  SquareTerminal,
-  Trash2,
+  UserRoundCheck,
 } from 'lucide-vue-next'
 
-// This is sample data.
-const data = {
-  user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/01.png',
-  },
-  teams: [
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
-    },
-  ],
-  navMain: [
-    {
-      title: 'Playground',
-      url: '#',
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: 'History',
-          url: '#',
-        },
-        {
-          title: 'Starred',
-          url: '#',
-        },
-        {
-          title: 'Settings',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Models',
-      url: '#',
-      icon: Bot,
-      items: [
-        {
-          title: 'Genesis',
-          url: '#',
-        },
-        {
-          title: 'Explorer',
-          url: '#',
-        },
-        {
-          title: 'Quantum',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Introduction',
-          url: '#',
-        },
-        {
-          title: 'Get Started',
-          url: '#',
-        },
-        {
-          title: 'Tutorials',
-          url: '#',
-        },
-        {
-          title: 'Changelog',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2,
-      items: [
-        {
-          title: 'General',
-          url: '#',
-        },
-        {
-          title: 'Team',
-          url: '#',
-        },
-        {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '#',
-      icon: Frame,
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChart,
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: Map,
-    },
-  ],
+interface NavItem {
+  title: string
+  url: string | object
+  icon?: any
+  isActive?: boolean
+  items?: NavItem[]
 }
 
-const activeTeam = ref(data.teams[0])
+interface NavGroup {
+  group: string
+  navItems: NavItem[]
+}
 
-function setActiveTeam(team: (typeof data.teams)[number]) {
+// This is sample
+const user = {
+  name: 'shadcn',
+  email: 'm@example.com',
+  avatar: '/avatars/01.png',
+}
+const teams = [
+  {
+    name: 'Acme Inc',
+    logo: GalleryVerticalEnd,
+    plan: 'Enterprise',
+  },
+  {
+    name: 'Acme Corp.',
+    logo: AudioWaveform,
+    plan: 'Startup',
+  },
+  {
+    name: 'Evil Corp.',
+    logo: Command,
+    plan: 'Free',
+  },
+]
+
+const navMain: NavGroup[] = [
+  {
+    group: 'Dashboard',
+    navItems: [
+      {
+        title: 'Analytics',
+        url: { name: 'index' },
+        icon: ChartArea,
+      },
+      {
+        title: 'Sales & Marketing',
+        url: { name: 'dashboard-sales' },
+        icon: PieChart,
+      },
+    ],
+  },
+  {
+    group: 'Pages',
+    navItems: [
+      {
+        title: 'Auth',
+        url: '#',
+        icon: UserRoundCheck,
+        isActive: true,
+        items: [
+          {
+            title: 'Login',
+            url: '#',
+          },
+          {
+            title: 'Reset Password',
+            url: '#',
+          },
+          {
+            title: 'Error',
+            url: '#',
+          },
+        ],
+      },
+      {
+        title: 'CRUD',
+        url: '#',
+        icon: Pen,
+      },
+      {
+        title: 'Settings',
+        url: '#',
+        icon: Settings2,
+        isActive: true,
+        items: [
+          {
+            title: 'General',
+            url: '#',
+          },
+          {
+            title: 'Team',
+            url: '#',
+          },
+          {
+            title: 'Billing',
+            url: '#',
+          },
+          {
+            title: 'Limits',
+            url: '#',
+          },
+        ],
+      },
+    ],
+  },
+]
+
+const activeTeam = ref(teams[0])
+
+onMounted(() => {
+  console.log('Layout mounted')
+})
+
+function setActiveTeam(team: (typeof teams)[number]) {
   activeTeam.value = team
 }
 </script>
@@ -197,7 +174,7 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
                   Teams
                 </DropdownMenuLabel>
                 <DropdownMenuItem
-                  v-for="(team, index) in data.teams"
+                  v-for="(team, index) in teams"
                   :key="team.name"
                   class="gap-2 p-2"
                   @click="setActiveTeam(team)"
@@ -224,22 +201,28 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Platform</SidebarGroupLabel>
-          <SidebarMenu>
+
+      <SidebarContent class="group-data-[collapsible=icon]:gap-0">
+        <SidebarGroup v-for="navGroup in navMain" :key="navGroup.group">
+          <SidebarGroupLabel>
+            {{ navGroup.group }}
+          </SidebarGroupLabel>
+
+          <SidebarMenu
+            v-for="navItem in navGroup.navItems"
+            :key="navItem.title"
+          >
             <Collapsible
-              v-for="item in data.navMain"
-              :key="item.title"
+              v-if="navItem.items"
               as-child
-              :default-open="item.isActive"
+              :default-open="navItem.isActive"
               class="group/collapsible"
             >
               <SidebarMenuItem>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton :tooltip="item.title">
-                    <component :is="item.icon" />
-                    <span>{{ item.title }}</span>
+                  <SidebarMenuButton :tooltip="navItem.title">
+                    <component :is="navItem.icon" />
+                    <span>{{ navItem.title }}</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
                     />
@@ -248,68 +231,39 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem
-                      v-for="subItem in item.items"
+                      v-for="subItem in navItem.items"
                       :key="subItem.title"
                     >
                       <SidebarMenuSubButton as-child>
-                        <a :href="subItem.url">
+                        <!-- <a :href="subItem.url">
                           <span>{{ subItem.title }}</span>
-                        </a>
+                        </a> -->
+                        <NuxtLink :to="subItem.url">
+                          <span>{{ subItem.title }}</span>
+                        </NuxtLink>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
                 </CollapsibleContent>
               </SidebarMenuItem>
             </Collapsible>
-          </SidebarMenu>
-        </SidebarGroup>
-        <SidebarGroup class="group-data-[collapsible=icon]:hidden">
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem v-for="item in data.projects" :key="item.name">
+
+            <SidebarMenuItem v-else>
               <SidebarMenuButton as-child>
-                <a :href="item.url">
-                  <component :is="item.icon" />
-                  <span>{{ item.name }}</span>
-                </a>
-              </SidebarMenuButton>
-              <DropdownMenu>
-                <DropdownMenuTrigger as-child>
-                  <SidebarMenuAction show-on-hover>
-                    <MoreHorizontal />
-                    <span class="sr-only">More</span>
-                  </SidebarMenuAction>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  class="w-48 rounded-lg"
-                  side="bottom"
-                  align="end"
-                >
-                  <DropdownMenuItem>
-                    <Folder class="text-muted-foreground" />
-                    <span>View Project</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Forward class="text-muted-foreground" />
-                    <span>Share Project</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Trash2 class="text-muted-foreground" />
-                    <span>Delete Project</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton class="text-sidebar-foreground/70">
-                <MoreHorizontal class="text-sidebar-foreground/70" />
-                <span>More</span>
+                <!-- <a :href="navItem.url">
+                  <component :is="navItem.icon" />
+                  <span>{{ navItem.title }}</span>
+                </a> -->
+                <NuxtLink :to="navItem.url">
+                  <component :is="navItem.icon" />
+                  <span>{{ navItem.title }}</span>
+                </NuxtLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -320,17 +274,12 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
                   class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                 >
                   <Avatar class="h-8 w-8 rounded-lg">
-                    <AvatarImage
-                      :src="data.user.avatar"
-                      :alt="data.user.name"
-                    />
+                    <AvatarImage :src="user.avatar" :alt="user.name" />
                     <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
                   </Avatar>
                   <div class="grid flex-1 text-left text-sm leading-tight">
-                    <span class="truncate font-semibold">{{
-                      data.user.name
-                    }}</span>
-                    <span class="truncate text-xs">{{ data.user.email }}</span>
+                    <span class="truncate font-semibold">{{ user.name }}</span>
+                    <span class="truncate text-xs">{{ user.email }}</span>
                   </div>
                   <ChevronsUpDown class="ml-auto size-4" />
                 </SidebarMenuButton>
@@ -346,19 +295,14 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
                     class="flex items-center gap-2 px-1 py-1.5 text-left text-sm"
                   >
                     <Avatar class="h-8 w-8 rounded-lg">
-                      <AvatarImage
-                        :src="data.user.avatar"
-                        :alt="data.user.name"
-                      />
+                      <AvatarImage :src="user.avatar" :alt="user.name" />
                       <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
                     </Avatar>
                     <div class="grid flex-1 text-left text-sm leading-tight">
                       <span class="truncate font-semibold">{{
-                        data.user.name
+                        user.name
                       }}</span>
-                      <span class="truncate text-xs">{{
-                        data.user.email
-                      }}</span>
+                      <span class="truncate text-xs">{{ user.email }}</span>
                     </div>
                   </div>
                 </DropdownMenuLabel>
@@ -396,6 +340,7 @@ function setActiveTeam(team: (typeof data.teams)[number]) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
+
     <SidebarInset>
       <header
         class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
