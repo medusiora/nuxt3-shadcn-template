@@ -3,27 +3,38 @@ import {
   AudioWaveform,
   BadgeCheck,
   Bell,
+  Box,
   ChartArea,
   ChevronRight,
   ChevronsUpDown,
+  Circle,
+  CircleAlert,
   Command,
   CreditCard,
+  ExternalLink,
   GalleryVerticalEnd,
+  IdCard,
+  Key,
   LogOut,
+  PanelBottom,
   Pen,
   PieChart,
   Plus,
   Settings2,
   Sparkles,
+  SquareCheckBig,
+  Table,
   UserRoundCheck,
 } from 'lucide-vue-next'
 
 interface NavItem {
   title: string
-  url: string | object
+  url?: string | object
+  target?: '_blank' | '_self' | '_parent' | '_top'
   icon?: any
   isActive?: boolean
   items?: NavItem[]
+  disabled?: boolean
 }
 
 interface NavGroup {
@@ -60,7 +71,7 @@ const navMain: NavGroup[] = [
     group: 'Dashboard',
     navItems: [
       {
-        title: 'Analytics',
+        title: 'Overview',
         url: { name: 'index' },
         icon: ChartArea,
       },
@@ -76,21 +87,24 @@ const navMain: NavGroup[] = [
     navItems: [
       {
         title: 'Auth',
-        url: '#',
         icon: UserRoundCheck,
         isActive: true,
         items: [
           {
             title: 'Login',
-            url: '#',
+            url: { name: 'login' },
           },
           {
-            title: 'Reset Password',
-            url: '#',
+            title: 'Forgot Password',
+            url: { name: 'reset-password' },
           },
           {
             title: 'Error',
-            url: '#',
+            url: '/error',
+          },
+          {
+            title: 'Access Denied',
+            url: '/error',
           },
         ],
       },
@@ -100,38 +114,72 @@ const navMain: NavGroup[] = [
         icon: Pen,
       },
       {
-        title: 'Settings',
+        title: 'Not Found',
+        url: '/404',
+        icon: Circle,
+      },
+      {
+        title: 'Empty',
+        url: '/empty',
+        icon: CircleAlert,
+      },
+    ],
+  },
+  {
+    group: 'Settings',
+    navItems: [
+      {
+        title: 'General',
         url: '#',
         icon: Settings2,
-        isActive: true,
-        items: [
-          {
-            title: 'General',
-            url: '#',
-          },
-          {
-            title: 'Team',
-            url: '#',
-          },
-          {
-            title: 'Billing',
-            url: '#',
-          },
-          {
-            title: 'Limits',
-            url: '#',
-          },
-        ],
+      },
+      {
+        title: 'Security',
+        url: '#',
+        icon: Key,
+        disabled: true,
+      },
+    ],
+  },
+  {
+    group: 'UI Components',
+    navItems: [
+      {
+        title: 'Form Layout',
+        url: '#',
+        icon: IdCard,
+      },
+      {
+        title: 'Input',
+        url: '#',
+        icon: SquareCheckBig,
+      },
+      {
+        title: 'Button',
+        url: '#',
+        icon: Box,
+      },
+      {
+        title: 'Table',
+        url: '#',
+        icon: Table,
+      },
+      {
+        title: 'Card',
+        url: '#',
+        icon: PanelBottom,
+      },
+      {
+        title: 'More',
+        url: 'https://www.shadcn-vue.com/docs/components/accordion.html',
+        target: '_blank',
+        icon: ExternalLink,
       },
     ],
   },
 ]
 
 const activeTeam = ref(teams[0])
-
-onMounted(() => {
-  console.log('Layout mounted')
-})
 
 function setActiveTeam(team: (typeof teams)[number]) {
   activeTeam.value = team
@@ -233,12 +281,12 @@ function setActiveTeam(team: (typeof teams)[number]) {
                     <SidebarMenuSubItem
                       v-for="subItem in navItem.items"
                       :key="subItem.title"
+                      :class="{
+                        'pointer-events-none opacity-50': subItem.disabled,
+                      }"
                     >
                       <SidebarMenuSubButton as-child>
-                        <!-- <a :href="subItem.url">
-                          <span>{{ subItem.title }}</span>
-                        </a> -->
-                        <NuxtLink :to="subItem.url">
+                        <NuxtLink :to="subItem.url" :target="subItem.target">
                           <span>{{ subItem.title }}</span>
                         </NuxtLink>
                       </SidebarMenuSubButton>
@@ -248,13 +296,14 @@ function setActiveTeam(team: (typeof teams)[number]) {
               </SidebarMenuItem>
             </Collapsible>
 
-            <SidebarMenuItem v-else>
+            <SidebarMenuItem
+              v-else
+              :class="{
+                'pointer-events-none opacity-50': navItem.disabled,
+              }"
+            >
               <SidebarMenuButton as-child>
-                <!-- <a :href="navItem.url">
-                  <component :is="navItem.icon" />
-                  <span>{{ navItem.title }}</span>
-                </a> -->
-                <NuxtLink :to="navItem.url">
+                <NuxtLink :to="navItem.url" :target="navItem.target">
                   <component :is="navItem.icon" />
                   <span>{{ navItem.title }}</span>
                 </NuxtLink>
