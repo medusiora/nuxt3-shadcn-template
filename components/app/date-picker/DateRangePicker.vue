@@ -14,7 +14,7 @@ import {
   DateFormatter,
   getLocalTimeZone,
 } from '@internationalized/date'
-import { Calendar as CalendarIcon } from 'lucide-vue-next'
+import { CalendarIcon } from 'lucide-vue-next'
 import { type Ref, ref } from 'vue'
 
 const df = new DateFormatter('en-US', {

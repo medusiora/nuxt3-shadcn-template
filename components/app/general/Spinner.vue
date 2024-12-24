@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Shell } from 'lucide-vue-next'
+import { ShellIcon } from 'lucide-vue-next'
 </script>
 
 <template>
-  <Shell class="animate-spin" />
+  <ShellIcon class="animate-spin" />
 </template>

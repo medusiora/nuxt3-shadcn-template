@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
-import { Activity, Fingerprint, Sprout, Telescope } from 'lucide-vue-next'
+import {
+  ActivityIcon,
+  FingerprintIcon,
+  SproutIcon,
+  TelescopeIcon,
+} from 'lucide-vue-next'
 
 defineProps({
   error: Object as () => NuxtError,
@@ -19,7 +24,7 @@ const isDev = import.meta.dev
       <div class="w-full space-y-6 text-center">
         <!-- 401 Unauthorized -->
         <div v-if="error?.statusCode === 401" class="space-y-6">
-          <Fingerprint :size="120" class="mx-auto text-muted-foreground" />
+          <FingerprintIcon :size="120" class="mx-auto text-muted-foreground" />
           <h1 class="text-4xl font-bold tracking-tight">Access Denied</h1>
           <p class="text-muted-foreground">
             Sorry, you don't have permission to access this page. Please log in
@@ -29,7 +34,7 @@ const isDev = import.meta.dev
 
         <!-- 404 Not Found -->
         <div v-else-if="error?.statusCode === 404" class="space-y-6">
-          <Telescope :size="120" class="mx-auto text-muted-foreground" />
+          <TelescopeIcon :size="120" class="mx-auto text-muted-foreground" />
           <h1 class="text-4xl font-bold tracking-tight">Page Not Found</h1>
           <p class="text-muted-foreground">
             The page you're looking for doesn't exist or has been moved.
@@ -38,7 +43,7 @@ const isDev = import.meta.dev
 
         <!-- 500 Server Error -->
         <div v-else-if="error?.statusCode === 500" class="space-y-6">
-          <Activity :size="120" class="mx-auto text-muted-foreground" />
+          <ActivityIcon :size="120" class="mx-auto text-muted-foreground" />
           <h1 class="text-4xl font-bold tracking-tight">Server Error</h1>
           <p class="text-muted-foreground">
             Oops! Something went wrong on our end. Please try again later.
@@ -47,7 +52,7 @@ const isDev = import.meta.dev
 
         <!-- Default Error -->
         <div v-else class="space-y-6">
-          <Sprout :size="120" class="mx-auto text-muted-foreground" />
+          <SproutIcon :size="120" class="mx-auto text-muted-foreground" />
           <h1 class="text-4xl font-bold tracking-tight">
             Oops! An Error Occurred
           </h1>

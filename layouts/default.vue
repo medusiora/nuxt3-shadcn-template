@@ -1,30 +1,30 @@
 <script setup lang="ts">
 import {
-  AudioWaveform,
-  BadgeCheck,
-  Bell,
-  Box,
-  ChartArea,
-  ChevronRight,
-  ChevronsUpDown,
-  Circle,
-  CircleAlert,
-  Command,
-  CreditCard,
-  ExternalLink,
-  GalleryVerticalEnd,
-  IdCard,
-  Key,
-  LogOut,
-  PanelBottom,
-  Pen,
-  PieChart,
-  Plus,
-  Settings2,
-  Sparkles,
-  SquareCheckBig,
-  Table,
-  UserRoundCheck,
+  AudioWaveformIcon,
+  BadgeCheckIcon,
+  BellIcon,
+  BoxIcon,
+  ChartAreaIcon,
+  ChevronRightIcon,
+  ChevronsUpDownIcon,
+  CircleIcon,
+  CircleAlertIcon,
+  CommandIcon,
+  CreditCardIcon,
+  ExternalLinkIcon,
+  GalleryVerticalEndIcon,
+  IdCardIcon,
+  KeyIcon,
+  LogOutIcon,
+  PanelBottomIcon,
+  PenIcon,
+  PieChartIcon,
+  PlusIcon,
+  Settings2Icon,
+  SparklesIcon,
+  SquareCheckBigIcon,
+  TableIcon,
+  UserRoundCheckIcon,
 } from 'lucide-vue-next'
 
 interface NavItem {
@@ -51,17 +51,17 @@ const user = {
 const teams = [
   {
     name: 'Acme Inc',
-    logo: GalleryVerticalEnd,
+    logo: GalleryVerticalEndIcon,
     plan: 'Enterprise',
   },
   {
     name: 'Acme Corp.',
-    logo: AudioWaveform,
+    logo: AudioWaveformIcon,
     plan: 'Startup',
   },
   {
     name: 'Evil Corp.',
-    logo: Command,
+    logo: CommandIcon,
     plan: 'Free',
   },
 ]
@@ -73,12 +73,13 @@ const navMain: NavGroup[] = [
       {
         title: 'Overview',
         url: { name: 'index' },
-        icon: ChartArea,
+        icon: ChartAreaIcon,
       },
       {
         title: 'Sales & Marketing',
         url: { name: 'dashboard-sales' },
-        icon: PieChart,
+        icon: PieChartIcon,
+        disabled: true,
       },
     ],
   },
@@ -87,7 +88,7 @@ const navMain: NavGroup[] = [
     navItems: [
       {
         title: 'Auth',
-        icon: UserRoundCheck,
+        icon: UserRoundCheckIcon,
         isActive: true,
         items: [
           {
@@ -111,17 +112,19 @@ const navMain: NavGroup[] = [
       {
         title: 'CRUD',
         url: '#',
-        icon: Pen,
+        icon: PenIcon,
+        disabled: true,
       },
       {
         title: 'Not Found',
         url: '/404',
-        icon: Circle,
+        icon: CircleIcon,
       },
       {
         title: 'Empty',
         url: '/empty',
-        icon: CircleAlert,
+        icon: CircleAlertIcon,
+        disabled: true,
       },
     ],
   },
@@ -131,12 +134,13 @@ const navMain: NavGroup[] = [
       {
         title: 'General',
         url: '#',
-        icon: Settings2,
+        icon: Settings2Icon,
+        disabled: true,
       },
       {
         title: 'Security',
         url: '#',
-        icon: Key,
+        icon: KeyIcon,
         disabled: true,
       },
     ],
@@ -147,33 +151,37 @@ const navMain: NavGroup[] = [
       {
         title: 'Form Layout',
         url: '#',
-        icon: IdCard,
+        icon: IdCardIcon,
+        disabled: true,
       },
       {
         title: 'Input',
         url: '#',
-        icon: SquareCheckBig,
+        icon: SquareCheckBigIcon,
+        disabled: true,
       },
       {
         title: 'Button',
         url: '#',
-        icon: Box,
+        icon: BoxIcon,
+        disabled: true,
       },
       {
         title: 'Table',
         url: '#',
-        icon: Table,
+        icon: TableIcon,
+        disabled: true,
       },
       {
-        title: 'Card',
-        url: '#',
-        icon: PanelBottom,
+        title: 'Cards',
+        url: { name: 'cards' },
+        icon: PanelBottomIcon,
       },
       {
         title: 'More',
         url: 'https://www.shadcn-vue.com/docs/components/accordion.html',
         target: '_blank',
-        icon: ExternalLink,
+        icon: ExternalLinkIcon,
       },
     ],
   },
@@ -209,7 +217,7 @@ function setActiveTeam(team: (typeof teams)[number]) {
                     }}</span>
                     <span class="truncate text-xs">{{ activeTeam.plan }}</span>
                   </div>
-                  <ChevronsUpDown class="ml-auto" />
+                  <ChevronsUpDownIcon class="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -240,7 +248,7 @@ function setActiveTeam(team: (typeof teams)[number]) {
                   <div
                     class="flex size-6 items-center justify-center rounded-md border bg-background"
                   >
-                    <Plus class="size-4" />
+                    <PlusIcon class="size-4" />
                   </div>
                   <div class="font-medium text-muted-foreground">Add team</div>
                 </DropdownMenuItem>
@@ -271,7 +279,7 @@ function setActiveTeam(team: (typeof teams)[number]) {
                   <SidebarMenuButton :tooltip="navItem.title">
                     <component :is="navItem.icon" />
                     <span>{{ navItem.title }}</span>
-                    <ChevronRight
+                    <ChevronRightIcon
                       class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
                     />
                   </SidebarMenuButton>
@@ -358,28 +366,28 @@ function setActiveTeam(team: (typeof teams)[number]) {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <Sparkles />
+                    <SparklesIcon />
                     Upgrade to Pro
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <BadgeCheck />
+                    <BadgeCheckIcon />
                     Account
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <CreditCard />
+                    <CreditCardIcon />
                     Billing
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Bell />
+                    <BellIcon />
                     Notifications
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <LogOut />
+                  <LogOutIcon />
                   Log out
                 </DropdownMenuItem>
               </DropdownMenuContent>
