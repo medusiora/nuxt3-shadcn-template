@@ -26,21 +26,7 @@ import {
   TableIcon,
   UserRoundCheckIcon,
 } from 'lucide-vue-next'
-
-interface NavItem {
-  title: string
-  url?: string | object
-  target?: '_blank' | '_self' | '_parent' | '_top'
-  icon?: any
-  isActive?: boolean
-  items?: NavItem[]
-  disabled?: boolean
-}
-
-interface NavGroup {
-  group: string
-  navItems: NavItem[]
-}
+import type { NavGroup } from '~/types/nav'
 
 // This is sample
 const user = {
