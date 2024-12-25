@@ -1,36 +1,117 @@
-const fs = require('fs')
+const fs = require('fs').promises
 const path = require('path')
-const { exec } = require('child_process')
+const { exec: execCallback } = require('child_process')
+const { promisify } = require('util')
+const exec = promisify(execCallback)
 
-const directoryPath = path.join(__dirname, '../components/ui')
+// Configuration
+const config = {
+  directoryPath: path.join(__dirname, '../components/ui'),
+  command: 'npx shadcn-vue@latest add',
+  options: '--overwrite',
+  concurrentLimit: 3, // Number of concurrent updates
+}
 
-fs.readdir(directoryPath, (err, components) => {
-  if (err) {
-    return console.log('Unable to scan directory: ' + err)
+// Helper to sleep between retries
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+// Execute command with retries
+async function executeWithRetry(command, maxRetries = 3, delayMs = 1000) {
+  let lastError
+
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const { stdout, stderr } = await exec(command)
+      if (stderr) {
+        console.warn(`Warning for command "${command}":`, stderr)
+      }
+      return stdout
+    } catch (error) {
+      lastError = error
+      console.error(`Attempt ${attempt}/${maxRetries} failed:`, error.message)
+
+      if (attempt < maxRetries) {
+        console.log(`Retrying in ${delayMs / 1000} seconds...`)
+        await sleep(delayMs)
+      }
+    }
   }
 
-  const updateComponent = (index) => {
-    if (index >= components.length) {
-      console.log('All components updated')
-      return
+  throw lastError
+}
+
+// Process components in batches
+async function processBatch(components, startIndex, batchSize) {
+  const batch = components.slice(startIndex, startIndex + batchSize)
+  const results = await Promise.allSettled(
+    batch.map(async (component) => {
+      const command = `${config.command} ${component} ${config.options}`
+      console.log(`Updating component ${component}...`)
+
+      try {
+        const stdout = await executeWithRetry(command)
+        console.log(`✔ Successfully updated ${component}`)
+        return { component, success: true, output: stdout }
+      } catch (error) {
+        console.error(`✘ Failed to update ${component}:`, error.message)
+        return { component, success: false, error: error.message }
+      }
+    }),
+  )
+
+  return results
+}
+
+// Main function
+async function updateComponents() {
+  try {
+    // Get list of components
+    const components = await fs.readdir(config.directoryPath)
+    console.log(`Found ${components.length} components to update`)
+
+    // Process all components in batches
+    const results = {
+      successful: [],
+      failed: [],
     }
 
-    const component = components[index]
-    console.log(`Updating component ${component}`)
-    // FIXME: unknown command 'update'
-    exec(`npx shadcn-vue update ${component}`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error updating component ${component}: ${error.message}`)
-        return
-      }
-      if (stderr) {
-        console.error(`Error output for component ${component}: ${stderr}`)
-        return
-      }
-      console.log(`Successfully updated component ${component}: ${stdout}`)
-      updateComponent(index + 1)
-    })
-  }
+    for (let i = 0; i < components.length; i += config.concurrentLimit) {
+      const batchResults = await processBatch(
+        components,
+        i,
+        config.concurrentLimit,
+      )
 
-  updateComponent(0)
-})
+      batchResults.forEach((result) => {
+        if (result.value.success) {
+          results.successful.push(result.value.component)
+        } else {
+          results.failed.push({
+            component: result.value.component,
+            error: result.value.error,
+          })
+        }
+      })
+    }
+
+    // Print summary
+    console.log('\nUpdate Summary:')
+    console.log('---------------')
+    console.log(`Total components: ${components.length}`)
+    console.log(`Successfully updated: ${results.successful.length}`)
+    console.log(`Failed updates: ${results.failed.length}`)
+
+    if (results.failed.length > 0) {
+      console.log('\nFailed Components:')
+      results.failed.forEach(({ component, error }) => {
+        console.log(`- ${component}: ${error}`)
+      })
+    }
+  } catch (error) {
+    console.error('Fatal error:', error.message)
+    process.exit(1)
+  }
+}
+
+// Run the script
+updateComponents().catch(console.error)
