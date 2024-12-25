@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "ui:update": "node ./scripts/shadcn-vue-updater.cjs"
+    "ui:update": "node ./scripts/shadcn-vue-updater.js"
   },
   "dependencies": {
     "@nuxtjs/color-mode": "^3.5.2",
