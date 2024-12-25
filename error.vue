@@ -64,6 +64,7 @@ const isDev = import.meta.dev
           </p>
         </div>
 
+        <!-- Stack -->
         <div
           v-if="isDev"
           class="max-h-[65vh] overflow-auto rounded-lg bg-gray-100 p-5 text-left"
@@ -73,10 +74,10 @@ const isDev = import.meta.dev
 
         <!-- Common Actions -->
         <div class="space-x-4">
-          <Button variant="link" @click="handleError('/')"> Try Again </Button>
           <Button variant="link" @click="handleError(route.fullPath)">
-            Go Home
+            Try Again
           </Button>
+          <Button variant="link" @click="handleError('/')"> Go Home </Button>
         </div>
       </div>
     </div>

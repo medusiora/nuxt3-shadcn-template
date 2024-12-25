@@ -8,7 +8,6 @@ import {
   ChevronRightIcon,
   ChevronsUpDownIcon,
   CircleIcon,
-  CircleAlertIcon,
   CommandIcon,
   CreditCardIcon,
   ExternalLinkIcon,
@@ -25,6 +24,9 @@ import {
   SquareCheckBigIcon,
   TableIcon,
   UserRoundCheckIcon,
+  FingerprintIcon,
+  ActivityIcon,
+  InboxIcon,
 } from 'lucide-vue-next'
 import type { NavGroup } from '~/types/nav'
 
@@ -85,14 +87,6 @@ const navMain: NavGroup[] = [
             title: 'Forgot Password',
             url: { name: 'reset-password' },
           },
-          {
-            title: 'Error',
-            url: '/error',
-          },
-          {
-            title: 'Access Denied',
-            url: '/error',
-          },
         ],
       },
       {
@@ -102,15 +96,24 @@ const navMain: NavGroup[] = [
         disabled: true,
       },
       {
+        title: 'Access Denied',
+        url: { name: '401' },
+        icon: FingerprintIcon,
+      },
+      {
         title: 'Not Found',
-        url: '/404',
+        url: { name: '404' },
         icon: CircleIcon,
       },
       {
+        title: 'Error',
+        url: { name: '500' },
+        icon: ActivityIcon,
+      },
+      {
         title: 'Empty',
-        url: '/empty',
-        icon: CircleAlertIcon,
-        disabled: true,
+        url: { name: 'empty' },
+        icon: InboxIcon,
       },
     ],
   },
@@ -324,7 +327,7 @@ function setActiveTeam(team: (typeof teams)[number]) {
                     <span class="truncate font-semibold">{{ user.name }}</span>
                     <span class="truncate text-xs">{{ user.email }}</span>
                   </div>
-                  <ChevronsUpDown class="ml-auto size-4" />
+                  <ChevronsUpDownIcon class="ml-auto size-4" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
