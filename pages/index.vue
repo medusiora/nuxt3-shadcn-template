@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: 'Dashboard',
+})
+</script>
 
 <template>
   <div class="flex-1 space-y-4">

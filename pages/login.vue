@@ -8,6 +8,10 @@ definePageMeta({
   layout: 'auth',
 })
 
+useHead({
+  title: 'Login',
+})
+
 const schema = z.object({
   username: z
     .string({

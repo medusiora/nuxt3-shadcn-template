@@ -10,7 +10,6 @@ import {
   CircleIcon,
   CommandIcon,
   CreditCardIcon,
-  ExternalLinkIcon,
   GalleryVerticalEndIcon,
   IdCardIcon,
   KeyIcon,
@@ -27,6 +26,7 @@ import {
   FingerprintIcon,
   ActivityIcon,
   InboxIcon,
+  EllipsisIcon,
 } from 'lucide-vue-next'
 import type { NavGroup } from '~/types/nav'
 
@@ -170,7 +170,7 @@ const navMain: NavGroup[] = [
         title: 'More',
         url: 'https://www.shadcn-vue.com/docs/components/accordion.html',
         target: '_blank',
-        icon: ExternalLinkIcon,
+        icon: EllipsisIcon,
       },
     ],
   },

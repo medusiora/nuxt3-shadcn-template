@@ -1,7 +1,9 @@
+<script lang="ts" setup>
+useHead({
+  title: 'Dashboard Sales',
+})
+</script>
+
 <template>
   <div></div>
 </template>
-
-<script lang="ts" setup></script>
-
-<style></style>

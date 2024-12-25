@@ -8,6 +8,10 @@ definePageMeta({
   layout: 'auth',
 })
 
+useHead({
+  title: 'Reset Password',
+})
+
 const schema = z.object({
   username: z
     .string({

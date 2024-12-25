@@ -9,6 +9,10 @@ import PaymentMethod from '@/components/app/card/PaymentMethod.vue'
 import ReportAnIssue from '@/components/app/card/ReportAnIssue.vue'
 import ShareDocument from '@/components/app/card/ShareDocument.vue'
 import TeamMembers from '@/components/app/card/TeamMembers.vue'
+
+useHead({
+  title: 'Cards',
+})
 </script>
 
 <template>

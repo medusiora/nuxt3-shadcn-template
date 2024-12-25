@@ -8,8 +8,14 @@ import {
   TelescopeIcon,
 } from 'lucide-vue-next'
 
-defineProps({
-  error: Object as () => NuxtError,
+const props = defineProps<{
+  error: NuxtError
+}>()
+
+const statusCode = computed(() => props.error?.statusCode)
+
+useHead({
+  title: `${statusCode.value}` || 'Error',
 })
 
 const isDev = import.meta.dev
@@ -79,12 +85,13 @@ const handleError = (path = '/') => clearError({ redirect: path })
             </div>
 
             <!-- Stack -->
-            <div
-              v-if="isDev"
-              class="max-h-[65vh] overflow-auto rounded-lg bg-gray-100 p-5 text-left"
-            >
-              <div v-if="error?.stack" v-html="error?.stack"></div>
-            </div>
+            <Card v-if="isDev" class="bg-secondary">
+              <CardContent class="max-h-[65vh] overflow-auto pt-6">
+                <div class="text-left">
+                  <div v-if="error?.stack" v-html="error?.stack"></div>
+                </div>
+              </CardContent>
+            </Card>
 
             <!-- Common Actions -->
             <div class="space-x-4">

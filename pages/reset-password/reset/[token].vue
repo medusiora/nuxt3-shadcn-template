@@ -19,6 +19,10 @@ definePageMeta({
   },
 })
 
+useHead({
+  title: 'Reset Password',
+})
+
 const schema = z
   .object({
     password: z.string(),
