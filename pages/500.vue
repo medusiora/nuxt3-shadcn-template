@@ -8,5 +8,5 @@ throw showError({
 </script>
 
 <template>
-  <div></div>
+  <div />
 </template>

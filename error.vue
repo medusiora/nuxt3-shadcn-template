@@ -87,8 +87,8 @@ const handleError = (path = '/') => clearError({ redirect: path })
             <!-- Stack -->
             <Card v-if="isDev" class="bg-secondary">
               <CardContent class="max-h-[65vh] overflow-auto pt-6">
-                <div class="text-left">
-                  <div v-if="error?.stack" v-html="error?.stack"></div>
+                <div v-if="error?.stack" class="text-left">
+                  {{ error?.stack }}
                 </div>
               </CardContent>
             </Card>

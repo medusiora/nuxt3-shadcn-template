@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { AutoForm, AutoFormField } from '@/components/ui/auto-form'
+import { AutoForm } from '@/components/ui/auto-form'
 import { Button } from '@/components/ui/button'
-import { toast } from 'vue-sonner'
 import * as z from 'zod'
 
 definePageMeta({
@@ -39,7 +38,7 @@ function onSubmit(values: Record<string, any>) {
     useRouter().push({ name: 'index' })
   }, 1000)
 
-  // toast('Event has been created', {
+  // useToast('Event has been created', {
   //   description: 'Sunday, December 03, 2023 at 9:00 AM',
   //   action: {
   //     label: 'Undo',

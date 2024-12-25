@@ -2,13 +2,13 @@
 import Container from '@/components/app/card/Container.vue'
 import CookieSettings from '@/components/app/card/CookieSettings.vue'
 import CreateAccount from '@/components/app/card/CreateAccount.vue'
-import DatePickerCard from '~/components/app/card/DatePickerCard.vue'
 import GitHubCard from '@/components/app/card/GitHubCard.vue'
 import Notifications from '@/components/app/card/Notifications.vue'
 import PaymentMethod from '@/components/app/card/PaymentMethod.vue'
 import ReportAnIssue from '@/components/app/card/ReportAnIssue.vue'
 import ShareDocument from '@/components/app/card/ShareDocument.vue'
 import TeamMembers from '@/components/app/card/TeamMembers.vue'
+import DatePickerCard from '~/components/app/card/DatePickerCard.vue'
 
 useHead({
   title: 'Cards',

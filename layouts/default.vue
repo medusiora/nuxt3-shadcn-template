@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+  ActivityIcon,
   AudioWaveformIcon,
   BadgeCheckIcon,
   BellIcon,
@@ -10,8 +11,11 @@ import {
   CircleIcon,
   CommandIcon,
   CreditCardIcon,
+  EllipsisIcon,
+  FingerprintIcon,
   GalleryVerticalEndIcon,
   IdCardIcon,
+  InboxIcon,
   KeyIcon,
   LogOutIcon,
   PanelBottomIcon,
@@ -23,10 +27,6 @@ import {
   SquareCheckBigIcon,
   TableIcon,
   UserRoundCheckIcon,
-  FingerprintIcon,
-  ActivityIcon,
-  InboxIcon,
-  EllipsisIcon,
 } from 'lucide-vue-next'
 import type { NavGroup } from '~/types/nav'
 
