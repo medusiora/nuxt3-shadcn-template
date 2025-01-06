@@ -29,6 +29,7 @@ import {
   TableIcon,
   UserRoundCheckIcon,
 } from 'lucide-vue-next'
+// TODO: Change lucide-vue-next to nuxt-icon
 import type { NavGroup } from '~/types/nav'
 
 // This is sample
@@ -140,9 +141,8 @@ const navMain: NavGroup[] = [
     navItems: [
       {
         title: 'Mail',
-        url: '#',
+        url: { name: 'mail' },
         icon: MailIcon,
-        disabled: true,
       },
       {
         title: 'Cards',

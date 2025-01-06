@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    '@nuxt/icon',
     'shadcn-nuxt',
     '@pinia/nuxt',
     '@nuxt/eslint',
