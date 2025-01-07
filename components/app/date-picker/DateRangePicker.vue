@@ -21,9 +21,13 @@ const df = new DateFormatter('en-US', {
   dateStyle: 'medium',
 })
 
+const today = new Date()
+const year = today.getFullYear()
+const month = today.getMonth()
+
 const value = ref({
-  start: new CalendarDate(2022, 1, 20),
-  end: new CalendarDate(2022, 1, 20).add({ days: 20 }),
+  start: new CalendarDate(year, month + 1, 1),
+  end: new CalendarDate(year, month + 1, 1).add({ days: 20 }),
 }) as Ref<DateRange>
 </script>
 
