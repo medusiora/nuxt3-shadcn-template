@@ -176,17 +176,17 @@ const accounts = [
   {
     label: 'Alicia Koch',
     email: 'alicia@example.com',
-    icon: 'ion:logo-vercel',
+    icon: 'lucide:triangle',
   },
   {
     label: 'Alicia Koch',
     email: 'alicia@gmail.com',
-    icon: 'mdi:google',
+    icon: 'lucide:mail',
   },
   {
     label: 'Alicia Koch',
     email: 'alicia@me.com',
-    icon: 'bx:bxl-gmail',
+    icon: 'lucide:heart',
   },
 ]
 </script>
