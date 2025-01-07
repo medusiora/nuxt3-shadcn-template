@@ -18,7 +18,6 @@ useHead({
   title: `${statusCode.value}` || 'Error',
 })
 
-const isDev = import.meta.dev
 const layoutName = computed<false | LayoutKey>(() => {
   // TODO: Check if is logged in to show 'default' or 'plain' layout
   return 'default'
@@ -85,13 +84,15 @@ const handleError = (path = '/') => clearError({ redirect: path })
             </div>
 
             <!-- Stack -->
-            <Card v-if="isDev" class="bg-secondary">
-              <CardContent class="max-h-[65vh] overflow-auto pt-6">
-                <div v-if="error?.stack" class="text-left">
-                  {{ error?.stack }}
-                </div>
-              </CardContent>
-            </Card>
+            <DevOnly>
+              <Card class="bg-secondary">
+                <CardContent class="max-h-[65vh] overflow-auto pt-6">
+                  <div v-if="error?.stack" class="text-left">
+                    {{ error?.stack }}
+                  </div>
+                </CardContent>
+              </Card>
+            </DevOnly>
 
             <!-- Common Actions -->
             <div class="space-x-4">
