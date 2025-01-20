@@ -19,13 +19,13 @@
     "@unovis/ts": "^1.5.0",
     "@unovis/vue": "^1.5.0",
     "@vee-validate/zod": "^4.15.0",
-    "@vueuse/core": "^12.3.0",
+    "@vueuse/core": "^12.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "lucide-vue-next": "^0.469.0",
-    "nuxt": "^3.15.1",
-    "pinia": "^2.3.0",
+    "nuxt": "^3.15.2",
+    "pinia": "^2.3.1",
     "radix-vue": "^1.9.12",
     "shadcn-nuxt": "^0.11.3",
     "tailwind-merge": "^2.6.0",
@@ -37,13 +37,13 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.21",
+    "@iconify-json/lucide": "^1.2.24",
     "@nuxt/eslint": "0.7.4",
-    "@nuxtjs/tailwindcss": "^6.12.2",
-    "eslint": "^9.17.0",
+    "@nuxtjs/tailwindcss": "^6.13.1",
+    "eslint": "^9.18.0",
     "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.9",
-    "typescript": "^5.7.2"
+    "prettier-plugin-tailwindcss": "^0.6.10",
+    "typescript": "^5.7.3"
   },
   "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
 }
