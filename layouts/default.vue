@@ -136,7 +136,7 @@ const navMain: NavGroup[] = [
     ],
   },
   {
-    group: 'UI Components',
+    group: 'Shadcn-vue',
     navItems: [
       {
         title: 'Mail',
@@ -150,9 +150,8 @@ const navMain: NavGroup[] = [
       },
       {
         title: 'Tasks',
-        url: '#',
+        url: { name: 'tasks' },
         icon: TableIcon,
-        disabled: true,
       },
       {
         title: 'Playground',

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { AutoForm } from '@/components/ui/auto-form'
-import { Button } from '@/components/ui/button'
 import * as z from 'zod'
 
 definePageMeta({
@@ -53,7 +51,7 @@ function onSubmit(values: Record<string, any>) {
           Enter your username below to reset your password
         </p>
       </div>
-      <AutoForm
+      <UiAutoForm
         class="grid gap-4"
         :schema="schema"
         :field-config="{
@@ -71,7 +69,7 @@ function onSubmit(values: Record<string, any>) {
         <UiButton variant="ghost" as-child>
           <NuxtLink to="/login">Back</NuxtLink>
         </UiButton>
-      </AutoForm>
+      </UiAutoForm>
     </div>
     <div v-else class="mx-auto grid w-[350px] gap-6">
       <div class="grid gap-2 text-center">
