@@ -80,7 +80,7 @@ function onSubmit(values: Record<string, any>) {
         @submit="onSubmit"
       >
         <UiButton type="submit">
-          <Spinner v-if="loading" class="mr-2" />
+          <AppSpinner v-if="loading" class="mr-2" />
           Reset Password
         </UiButton>
         <UiButton variant="ghost" as-child>

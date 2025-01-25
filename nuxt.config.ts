@@ -16,12 +16,11 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/eslint',
   ],
-  components: [
-    {
-      path: '~/components/app',
-      pathPrefix: false,
-    },
-  ],
+  // components: [
+  //   {
+  //     path: '~/components/app',
+  //   },
+  // ],
   shadcn: {
     /**
      * Prefix for all the imported component

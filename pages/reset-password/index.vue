@@ -65,7 +65,7 @@ function onSubmit(values: Record<string, any>) {
         @submit="onSubmit"
       >
         <UiButton type="submit">
-          <Spinner v-if="loading" class="mr-2" />
+          <AppSpinner v-if="loading" class="mr-2" />
           Reset Password
         </UiButton>
         <UiButton variant="ghost" as-child>
@@ -83,7 +83,7 @@ function onSubmit(values: Record<string, any>) {
           You can use the link in the email to reset your password. The link
           will expire in 1 hours.
         </p>
-        <Divider label="Or" />
+        <AppDivider label="Or" />
         <p class="text-balance text-muted-foreground">
           If you don't receive an email, please check your spam folder. Or
           <a href="#" class="underline underline-offset-4 hover:text-primary">

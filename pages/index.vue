@@ -138,7 +138,7 @@ useHead({
               <UiCardTitle>Overview</UiCardTitle>
             </UiCardHeader>
             <UiCardContent class="pl-2">
-              <Overview />
+              <DashboardOverview />
             </UiCardContent>
           </UiCard>
           <UiCard class="col-span-3">
@@ -149,7 +149,7 @@ useHead({
               </UiCardDescription>
             </UiCardHeader>
             <UiCardContent>
-              <RecentSales />
+              <DashboardRecentSales />
             </UiCardContent>
           </UiCard>
         </div>

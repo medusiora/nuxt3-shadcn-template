@@ -418,7 +418,7 @@ function setActiveTeam(team: (typeof teams)[number]) {
         </div>
 
         <div class="ml-auto flex items-center gap-2 px-4">
-          <ColorMode />
+          <AppColorMode />
         </div>
       </header>
       <div class="min-h-[calc(100vh-64px)] p-4 pt-0">

@@ -5,10 +5,10 @@ import { cn } from '@/lib/utils'
 import { refDebounced } from '@vueuse/core'
 import { SearchIcon } from 'lucide-vue-next'
 
-import AccountSwitcher from './AccountSwitcher.vue'
+import AccountSwitcher from './MailAccountSwitcher.vue'
 import MailDisplay from './MailDisplay.vue'
 import MailList from './MailList.vue'
-import Nav, { type LinkProp } from './Nav.vue'
+import Nav, { type LinkProp } from './MailNav.vue'
 
 interface MailProps {
   accounts: {
