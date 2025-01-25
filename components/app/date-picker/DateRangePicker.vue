@@ -1,13 +1,5 @@
 <script setup lang="ts">
 import type { DateRange } from 'radix-vue'
-import { Button } from '@/components/ui/button'
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-import { RangeCalendar } from '@/components/ui/range-calendar'
 import { cn } from '@/lib/utils'
 import {
   CalendarDate,
@@ -32,9 +24,9 @@ const value = ref({
 </script>
 
 <template>
-  <Popover>
-    <PopoverTrigger as-child>
-      <Button
+  <UiPopover>
+    <UiPopoverTrigger as-child>
+      <UiButton
         variant="outline"
         :class="
           cn(
@@ -55,15 +47,15 @@ const value = ref({
           </template>
         </template>
         <template v-else> Pick a date </template>
-      </Button>
-    </PopoverTrigger>
-    <PopoverContent class="w-auto p-0">
-      <RangeCalendar
+      </UiButton>
+    </UiPopoverTrigger>
+    <UiPopoverContent class="w-auto p-0">
+      <UiRangeCalendar
         v-model="value"
         initial-focus
         :number-of-months="2"
         @update:start-value="(startDate) => (value.start = startDate)"
       />
-    </PopoverContent>
-  </Popover>
+    </UiPopoverContent>
+  </UiPopover>
 </template>

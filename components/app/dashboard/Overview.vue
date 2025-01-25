@@ -16,7 +16,7 @@ const data = [
 </script>
 
 <template>
-  <BarChart
+  <UiBarChart
     :data="data"
     :categories="['total']"
     :index="'name'"

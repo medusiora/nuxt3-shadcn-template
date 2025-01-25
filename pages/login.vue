@@ -57,7 +57,7 @@ function onSubmit(values: Record<string, any>) {
           Enter your email below to login to your account
         </p>
       </div>
-      <AutoForm
+      <UiAutoForm
         class="grid gap-4"
         :schema="schema"
         :field-config="{
@@ -79,11 +79,11 @@ function onSubmit(values: Record<string, any>) {
           </NuxtLink>
         </div>
 
-        <Button type="submit">
+        <UiButton type="submit">
           <Spinner v-if="loading" class="mr-2" />
           Login
-        </Button>
-      </AutoForm>
+        </UiButton>
+      </UiAutoForm>
     </div>
   </div>
 </template>

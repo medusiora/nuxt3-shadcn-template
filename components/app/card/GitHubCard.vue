@@ -1,22 +1,4 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Separator } from '@/components/ui/separator'
 import {
   ChevronDownIcon,
   CircleIcon,
@@ -26,47 +8,51 @@ import {
 </script>
 
 <template>
-  <Card>
-    <CardHeader
+  <UiCard>
+    <UiCardHeader
       class="grid grid-cols-[minmax(0,1fr)_110px] items-start gap-4 space-y-0"
     >
       <div class="space-y-1">
-        <CardTitle>shadcn/ui</CardTitle>
-        <CardDescription>
+        <UiCardTitle>shadcn/ui</UiCardTitle>
+        <UiCardDescription>
           Beautifully designed components built with Radix UI and Tailwind CSS.
-        </CardDescription>
+        </UiCardDescription>
       </div>
       <div
         class="flex items-center space-x-1 rounded-md bg-secondary text-secondary-foreground"
       >
-        <Button variant="secondary" class="px-3 shadow-none">
+        <UiButton variant="secondary" class="px-3 shadow-none">
           <StarIcon class="mr-2 h-4 w-4" />
           Star
-        </Button>
-        <Separator orientation="vertical" class="h-5" />
-        <DropdownMenu>
-          <DropdownMenuTrigger as-child>
-            <Button variant="secondary" class="px-2 shadow-none">
+        </UiButton>
+        <UiSeparator orientation="vertical" class="h-5" />
+        <UiDropdownMenu>
+          <UiDropdownMenuTrigger as-child>
+            <UiButton variant="secondary" class="px-2 shadow-none">
               <ChevronDownIcon class="h-4 w-4 text-secondary-foreground" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" :align-offset="-5" class="w-[200px]">
-            <DropdownMenuLabel>Suggested Lists</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuCheckboxItem checked>
+            </UiButton>
+          </UiDropdownMenuTrigger>
+          <UiDropdownMenuContent
+            align="end"
+            :align-offset="-5"
+            class="w-[200px]"
+          >
+            <UiDropdownMenuLabel>Suggested Lists</UiDropdownMenuLabel>
+            <UiDropdownMenuSeparator />
+            <UiDropdownMenuCheckboxItem checked>
               Future Ideas
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem>My Stack</DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem>Inspiration</DropdownMenuCheckboxItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            </UiDropdownMenuCheckboxItem>
+            <UiDropdownMenuCheckboxItem>My Stack</UiDropdownMenuCheckboxItem>
+            <UiDropdownMenuCheckboxItem>Inspiration</UiDropdownMenuCheckboxItem>
+            <UiDropdownMenuSeparator />
+            <UiDropdownMenuItem>
               <PlusIcon class="mr-2 h-4 w-4" /> Create List
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </UiDropdownMenuItem>
+          </UiDropdownMenuContent>
+        </UiDropdownMenu>
       </div>
-    </CardHeader>
-    <CardContent>
+    </UiCardHeader>
+    <UiCardContent>
       <div class="flex space-x-4 text-sm text-muted-foreground">
         <div class="flex items-center">
           <CircleIcon class="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
@@ -78,6 +64,6 @@ import {
         </div>
         <div>Updated April 2023</div>
       </div>
-    </CardContent>
-  </Card>
+    </UiCardContent>
+  </UiCard>
 </template>

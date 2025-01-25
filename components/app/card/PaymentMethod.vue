@@ -1,38 +1,18 @@
-<script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Payment Method</CardTitle>
-      <CardDescription>
+  <UiCard>
+    <UiCardHeader>
+      <UiCardTitle>Payment Method</UiCardTitle>
+      <UiCardDescription>
         Add a new payment method to your account.
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="grid gap-6">
-      <RadioGroup default-value="card" class="grid grid-cols-3 gap-4">
+      </UiCardDescription>
+    </UiCardHeader>
+    <UiCardContent class="grid gap-6">
+      <UiRadioGroup default-value="card" class="grid grid-cols-3 gap-4">
         <div>
-          <RadioGroupItem id="card" value="card" class="peer sr-only" />
-          <Label
+          <UiRadioGroupItem id="card" value="card" class="peer sr-only" />
+          <UiLabel
             for="card"
             class="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
@@ -50,11 +30,11 @@ import {
               <path d="M2 10h20" />
             </svg>
             Card
-          </Label>
+          </UiLabel>
         </div>
         <div>
-          <RadioGroupItem id="paypal" value="paypal" class="peer sr-only" />
-          <Label
+          <UiRadioGroupItem id="paypal" value="paypal" class="peer sr-only" />
+          <UiLabel
             for="paypal"
             class="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
@@ -65,11 +45,11 @@ import {
               />
             </svg>
             Paypal
-          </Label>
+          </UiLabel>
         </div>
         <div>
-          <RadioGroupItem id="apple" value="apple" class="peer sr-only" />
-          <Label
+          <UiRadioGroupItem id="apple" value="apple" class="peer sr-only" />
+          <UiLabel
             for="apple"
             class="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
@@ -80,65 +60,65 @@ import {
               />
             </svg>
             Apple
-          </Label>
+          </UiLabel>
         </div>
-      </RadioGroup>
+      </UiRadioGroup>
       <div class="grid gap-2">
-        <Label for="name">Name</Label>
-        <Input id="name" placeholder="First Last" />
+        <UiLabel for="name">Name</UiLabel>
+        <UiInput id="name" placeholder="First Last" />
       </div>
       <div class="grid gap-2">
-        <Label for="number">Card number</Label>
-        <Input id="number" placeholder="" />
+        <UiLabel for="number">Card number</UiLabel>
+        <UiInput id="number" placeholder="" />
       </div>
       <div class="grid grid-cols-3 gap-4">
         <div class="grid gap-2">
-          <Label for="month">Expires</Label>
-          <Select>
-            <SelectTrigger id="month">
-              <SelectValue placeholder="Month" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="1"> January </SelectItem>
-              <SelectItem value="2"> February </SelectItem>
-              <SelectItem value="3"> March </SelectItem>
-              <SelectItem value="4"> April </SelectItem>
-              <SelectItem value="5"> May </SelectItem>
-              <SelectItem value="6"> June </SelectItem>
-              <SelectItem value="7"> July </SelectItem>
-              <SelectItem value="8"> August </SelectItem>
-              <SelectItem value="9"> September </SelectItem>
-              <SelectItem value="10"> October </SelectItem>
-              <SelectItem value="11"> November </SelectItem>
-              <SelectItem value="12"> December </SelectItem>
-            </SelectContent>
-          </Select>
+          <UiLabel for="month">Expires</UiLabel>
+          <UiSelect>
+            <UiSelectTrigger id="month">
+              <UiSelectValue placeholder="Month" />
+            </UiSelectTrigger>
+            <UiSelectContent>
+              <UiSelectItem value="1"> January </UiSelectItem>
+              <UiSelectItem value="2"> February </UiSelectItem>
+              <UiSelectItem value="3"> March </UiSelectItem>
+              <UiSelectItem value="4"> April </UiSelectItem>
+              <UiSelectItem value="5"> May </UiSelectItem>
+              <UiSelectItem value="6"> June </UiSelectItem>
+              <UiSelectItem value="7"> July </UiSelectItem>
+              <UiSelectItem value="8"> August </UiSelectItem>
+              <UiSelectItem value="9"> September </UiSelectItem>
+              <UiSelectItem value="10"> October </UiSelectItem>
+              <UiSelectItem value="11"> November </UiSelectItem>
+              <UiSelectItem value="12"> December </UiSelectItem>
+            </UiSelectContent>
+          </UiSelect>
         </div>
         <div class="grid gap-2">
-          <Label for="year">Year</Label>
-          <Select>
-            <SelectTrigger id="year">
-              <SelectValue placeholder="Year" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem
+          <UiLabel for="year">Year</UiLabel>
+          <UiSelect>
+            <UiSelectTrigger id="year">
+              <UiSelectValue placeholder="Year" />
+            </UiSelectTrigger>
+            <UiSelectContent>
+              <UiSelectItem
                 v-for="i in 10"
                 :key="i"
                 :value="`${new Date().getFullYear() + i}`"
               >
                 {{ new Date().getFullYear() + i }}
-              </SelectItem>
-            </SelectContent>
-          </Select>
+              </UiSelectItem>
+            </UiSelectContent>
+          </UiSelect>
         </div>
         <div class="grid gap-2">
-          <Label for="cvc">CVC</Label>
-          <Input id="cvc" placeholder="CVC" />
+          <UiLabel for="cvc">CVC</UiLabel>
+          <UiInput id="cvc" placeholder="CVC" />
         </div>
       </div>
-    </CardContent>
-    <CardFooter>
-      <Button class="w-full"> Continue </Button>
-    </CardFooter>
-  </Card>
+    </UiCardContent>
+    <UiCardFooter>
+      <UiButton class="w-full"> Continue </UiButton>
+    </UiCardFooter>
+  </UiCard>
 </template>

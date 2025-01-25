@@ -1,28 +1,16 @@
-<script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <Card>
-    <CardHeader class="space-y-1">
-      <CardTitle class="text-2xl"> Create an account </CardTitle>
-      <CardDescription>
+  <UiCard>
+    <UiCardHeader class="space-y-1">
+      <UiCardTitle class="text-2xl"> Create an account </UiCardTitle>
+      <UiCardDescription>
         Enter your email below to create your account
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="grid gap-4">
+      </UiCardDescription>
+    </UiCardHeader>
+    <UiCardContent class="grid gap-4">
       <div class="grid grid-cols-2 gap-6">
-        <Button variant="outline">
+        <UiButton variant="outline">
           <!-- <Github class="mr-2 h-4 w-4" /> -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,8 +30,8 @@ import { Label } from '@/components/ui/label'
             <path d="M9 18c-4.51 2-5-2-7-2" />
           </svg>
           GitHub
-        </Button>
-        <Button variant="outline">
+        </UiButton>
+        <UiButton variant="outline">
           <svg role="img" viewBox="0 0 24 24" class="mr-2 h-4 w-4">
             <path
               fill="currentColor"
@@ -51,7 +39,7 @@ import { Label } from '@/components/ui/label'
             />
           </svg>
           Google
-        </Button>
+        </UiButton>
       </div>
       <div class="relative">
         <div class="absolute inset-0 flex items-center">
@@ -64,16 +52,16 @@ import { Label } from '@/components/ui/label'
         </div>
       </div>
       <div class="grid gap-2">
-        <Label for="email">Email</Label>
-        <Input id="email" type="email" placeholder="m@example.com" />
+        <UiLabel for="email">Email</UiLabel>
+        <UiInput id="email" type="email" placeholder="m@example.com" />
       </div>
       <div class="grid gap-2">
-        <Label for="password">Password</Label>
-        <Input id="password" type="password" />
+        <UiLabel for="password">Password</UiLabel>
+        <UiInput id="password" type="password" />
       </div>
-    </CardContent>
-    <CardFooter>
-      <Button class="w-full"> Create account </Button>
-    </CardFooter>
-  </Card>
+    </UiCardContent>
+    <UiCardFooter>
+      <UiButton class="w-full"> Create account </UiButton>
+    </UiCardFooter>
+  </UiCard>
 </template>

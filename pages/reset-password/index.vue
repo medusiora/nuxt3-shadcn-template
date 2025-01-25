@@ -64,13 +64,13 @@ function onSubmit(values: Record<string, any>) {
         }"
         @submit="onSubmit"
       >
-        <Button type="submit">
+        <UiButton type="submit">
           <Spinner v-if="loading" class="mr-2" />
           Reset Password
-        </Button>
-        <Button variant="ghost" as-child>
+        </UiButton>
+        <UiButton variant="ghost" as-child>
           <NuxtLink to="/login">Back</NuxtLink>
-        </Button>
+        </UiButton>
       </AutoForm>
     </div>
     <div v-else class="mx-auto grid w-[350px] gap-6">
@@ -93,9 +93,9 @@ function onSubmit(values: Record<string, any>) {
         </p>
       </div>
 
-      <Button variant="ghost" as-child>
+      <UiButton variant="ghost" as-child>
         <NuxtLink to="/login">Back</NuxtLink>
-      </Button>
+      </UiButton>
     </div>
   </div>
 </template>

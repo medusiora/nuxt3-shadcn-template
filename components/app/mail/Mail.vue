@@ -1,19 +1,10 @@
 <script lang="ts" setup>
 import type { Mail } from '@/types/mail'
 
-import { Input } from '@/components/ui/input'
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from '@/components/ui/resizable'
-import { Separator } from '@/components/ui/separator'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { TooltipProvider } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { refDebounced } from '@vueuse/core'
-import { Search } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
+import { SearchIcon } from 'lucide-vue-next'
+
 import AccountSwitcher from './AccountSwitcher.vue'
 import MailDisplay from './MailDisplay.vue'
 import MailList from './MailList.vue'
@@ -151,13 +142,13 @@ function onExpand() {
 </script>
 
 <template>
-  <TooltipProvider :delay-duration="0">
-    <ResizablePanelGroup
+  <UiTooltipProvider :delay-duration="0">
+    <UiResizablePanelGroup
       id="resize-panel-group-1"
       direction="horizontal"
       class="h-full max-h-[800px] items-stretch"
     >
-      <ResizablePanel
+      <UiResizablePanel
         id="resize-panel-1"
         :default-size="defaultLayout[0]"
         :collapsed-size="navCollapsedSize"
@@ -183,42 +174,45 @@ function onExpand() {
         >
           <AccountSwitcher :is-collapsed="isCollapsed" :accounts="accounts" />
         </div>
-        <Separator />
+        <UiSeparator />
         <Nav :is-collapsed="isCollapsed" :links="links" />
-        <Separator />
+        <UiSeparator />
         <Nav :is-collapsed="isCollapsed" :links="links2" />
-      </ResizablePanel>
-      <ResizableHandle id="resize-handle-1" with-handle />
-      <ResizablePanel
+      </UiResizablePanel>
+      <UiResizableHandle id="resize-handle-1" with-handle />
+      <UiResizablePanel
         id="resize-panel-2"
         :default-size="defaultLayout[1]"
         :min-size="30"
       >
-        <Tabs default-value="all">
+        <UiTabs default-value="all">
           <div class="flex items-center px-4 py-2">
             <h1 class="text-xl font-bold">Inbox</h1>
-            <TabsList class="ml-auto">
-              <TabsTrigger value="all" class="text-zinc-600 dark:text-zinc-200">
+            <UiTabsList class="ml-auto">
+              <UiTabsTrigger
+                value="all"
+                class="text-zinc-600 dark:text-zinc-200"
+              >
                 All mail
-              </TabsTrigger>
-              <TabsTrigger
+              </UiTabsTrigger>
+              <UiTabsTrigger
                 value="unread"
                 class="text-zinc-600 dark:text-zinc-200"
               >
                 Unread
-              </TabsTrigger>
-            </TabsList>
+              </UiTabsTrigger>
+            </UiTabsList>
           </div>
-          <Separator />
+          <UiSeparator />
           <div
             class="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60"
           >
             <form>
               <div class="relative">
-                <Search
+                <SearchIcon
                   class="absolute left-2 top-2.5 size-4 text-muted-foreground"
                 />
-                <Input
+                <UiInput
                   v-model="searchValue"
                   placeholder="Search"
                   class="pl-8"
@@ -226,24 +220,24 @@ function onExpand() {
               </div>
             </form>
           </div>
-          <TabsContent value="all" class="m-0">
+          <UiTabsContent value="all" class="m-0">
             <MailList
               v-model:selected-mail="selectedMail"
               :items="filteredMailList"
             />
-          </TabsContent>
-          <TabsContent value="unread" class="m-0">
+          </UiTabsContent>
+          <UiTabsContent value="unread" class="m-0">
             <MailList
               v-model:selected-mail="selectedMail"
               :items="unreadMailList"
             />
-          </TabsContent>
-        </Tabs>
-      </ResizablePanel>
-      <ResizableHandle id="resiz-handle-2" with-handle />
-      <ResizablePanel id="resize-panel-3" :default-size="defaultLayout[2]">
+          </UiTabsContent>
+        </UiTabs>
+      </UiResizablePanel>
+      <UiResizableHandle id="resiz-handle-2" with-handle />
+      <UiResizablePanel id="resize-panel-3" :default-size="defaultLayout[2]">
         <MailDisplay :mail="selectedMailData" />
-      </ResizablePanel>
-    </ResizablePanelGroup>
-  </TooltipProvider>
+      </UiResizablePanel>
+    </UiResizablePanelGroup>
+  </UiTooltipProvider>
 </template>

@@ -1,13 +1,5 @@
 <script lang="ts" setup>
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { cn } from '@/lib/utils'
-import { computed, ref } from 'vue'
 
 interface AccountSwitcherProps {
   isCollapsed: boolean
@@ -27,8 +19,8 @@ const selectedEmailData = computed(() =>
 </script>
 
 <template>
-  <Select v-model="selectedEmail">
-    <SelectTrigger
+  <UiSelect v-model="selectedEmail">
+    <UiSelectTrigger
       aria-label="Select account"
       :class="
         cn(
@@ -40,17 +32,17 @@ const selectedEmailData = computed(() =>
         )
       "
     >
-      <SelectValue placeholder="Select an account">
+      <UiSelectValue placeholder="Select an account">
         <div class="flex items-center gap-3">
           <Icon class="size-4" :name="selectedEmailData!.icon" />
           <span v-if="!isCollapsed">
             {{ selectedEmailData!.label }}
           </span>
         </div>
-      </SelectValue>
-    </SelectTrigger>
-    <SelectContent>
-      <SelectItem
+      </UiSelectValue>
+    </UiSelectTrigger>
+    <UiSelectContent>
+      <UiSelectItem
         v-for="account of accounts"
         :key="account.email"
         :value="account.email"
@@ -61,7 +53,7 @@ const selectedEmailData = computed(() =>
           <Icon class="size-4" :name="account.icon" />
           {{ account.email }}
         </div>
-      </SelectItem>
-    </SelectContent>
-  </Select>
+      </UiSelectItem>
+    </UiSelectContent>
+  </UiSelect>
 </template>

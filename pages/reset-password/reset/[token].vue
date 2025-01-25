@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { AutoForm } from '@/components/ui/auto-form'
-import { Button } from '@/components/ui/button'
 import * as z from 'zod'
 
 definePageMeta({
@@ -81,13 +79,13 @@ function onSubmit(values: Record<string, any>) {
         }"
         @submit="onSubmit"
       >
-        <Button type="submit">
+        <UiButton type="submit">
           <Spinner v-if="loading" class="mr-2" />
           Reset Password
-        </Button>
-        <Button variant="ghost" as-child>
+        </UiButton>
+        <UiButton variant="ghost" as-child>
           <NuxtLink to="/login">Back</NuxtLink>
-        </Button>
+        </UiButton>
       </AutoForm>
     </div>
   </div>

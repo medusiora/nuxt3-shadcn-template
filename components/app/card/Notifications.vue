@@ -1,23 +1,16 @@
 <script setup lang="ts">
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 import { BellIcon, EyeClosedIcon, PersonStandingIcon } from 'lucide-vue-next'
 </script>
 
 <template>
-  <Card>
-    <CardHeader class="pb-3">
-      <CardTitle>Notifications</CardTitle>
-      <CardDescription>
+  <UiCard>
+    <UiCardHeader class="pb-3">
+      <UiCardTitle>Notifications</UiCardTitle>
+      <UiCardDescription>
         Choose what you want to be notified about.
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="grid gap-1">
+      </UiCardDescription>
+    </UiCardHeader>
+    <UiCardContent class="grid gap-1">
       <div
         class="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground"
       >
@@ -51,6 +44,6 @@ import { BellIcon, EyeClosedIcon, PersonStandingIcon } from 'lucide-vue-next'
           </p>
         </div>
       </div>
-    </CardContent>
-  </Card>
+    </UiCardContent>
+  </UiCard>
 </template>

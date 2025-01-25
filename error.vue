@@ -85,23 +85,23 @@ const handleError = (path = '/') => clearError({ redirect: path })
 
             <!-- Stack -->
             <DevOnly>
-              <Card class="bg-secondary">
-                <CardContent class="max-h-[65vh] overflow-auto pt-6">
-                  <div v-if="error?.stack" class="text-left">
+              <UiCard class="bg-secondary">
+                <UiCardContent class="max-h-[65vh] overflow-auto pt-6">
+                  <div v-if="error?.stack" class="break-all text-left text-sm">
                     {{ error?.stack }}
                   </div>
-                </CardContent>
-              </Card>
+                </UiCardContent>
+              </UiCard>
             </DevOnly>
 
             <!-- Common Actions -->
             <div class="space-x-4">
-              <Button variant="link" @click="handleError(route.fullPath)">
+              <UiButton variant="link" @click="handleError(route.fullPath)">
                 Try Again
-              </Button>
-              <Button variant="link" @click="handleError('/')">
+              </UiButton>
+              <UiButton variant="link" @click="handleError('/')">
                 Go Home
-              </Button>
+              </UiButton>
             </div>
           </div>
         </div>

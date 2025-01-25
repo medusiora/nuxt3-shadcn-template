@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import type { Mail } from '@/types/mail'
-import { Badge } from '@/components/ui/badge'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import { formatDistanceToNow } from 'date-fns'
 
@@ -22,7 +20,7 @@ function getBadgeVariantFromLabel(label: string) {
 </script>
 
 <template>
-  <ScrollArea class="flex h-screen">
+  <UiScrollArea class="flex h-screen">
     <div class="flex flex-1 flex-col gap-2 p-4 pt-0">
       <TransitionGroup name="list" appear>
         <button
@@ -71,18 +69,18 @@ function getBadgeVariantFromLabel(label: string) {
             {{ item.text.substring(0, 300) }}
           </div>
           <div class="flex items-center gap-2">
-            <Badge
+            <UiBadge
               v-for="label of item.labels"
               :key="label"
               :variant="getBadgeVariantFromLabel(label)"
             >
               {{ label }}
-            </Badge>
+            </UiBadge>
           </div>
         </button>
       </TransitionGroup>
     </div>
-  </ScrollArea>
+  </UiScrollArea>
 </template>
 
 <style scoped>

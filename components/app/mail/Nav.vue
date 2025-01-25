@@ -1,10 +1,5 @@
 <script lang="ts" setup>
 import { buttonVariants } from '@/components/ui/button'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 
 export interface LinkProp {
@@ -31,8 +26,8 @@ defineProps<NavProps>()
       class="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2"
     >
       <template v-for="(link, index) of links">
-        <Tooltip v-if="isCollapsed" :key="`1-${index}`" :delay-duration="0">
-          <TooltipTrigger as-child>
+        <UiTooltip v-if="isCollapsed" :key="`1-${index}`" :delay-duration="0">
+          <UiTooltipTrigger as-child>
             <a
               href="#"
               :class="
@@ -47,14 +42,14 @@ defineProps<NavProps>()
               <Icon :name="link.icon" class="size-4" />
               <span class="sr-only">{{ link.title }}</span>
             </a>
-          </TooltipTrigger>
-          <TooltipContent side="right" class="flex items-center gap-4">
+          </UiTooltipTrigger>
+          <UiTooltipContent side="right" class="flex items-center gap-4">
             {{ link.title }}
             <span v-if="link.label" class="ml-auto text-muted-foreground">
               {{ link.label }}
             </span>
-          </TooltipContent>
-        </Tooltip>
+          </UiTooltipContent>
+        </UiTooltip>
 
         <a
           v-else

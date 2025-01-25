@@ -1,80 +1,60 @@
-<script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { Textarea } from '@/components/ui/textarea'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Report an issue</CardTitle>
-      <CardDescription>
+  <UiCard>
+    <UiCardHeader>
+      <UiCardTitle>Report an issue</UiCardTitle>
+      <UiCardDescription>
         What area are you having problems with?
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="grid gap-6">
+      </UiCardDescription>
+    </UiCardHeader>
+    <UiCardContent class="grid gap-6">
       <div class="grid grid-cols-2 gap-4">
         <div class="grid gap-2">
-          <Label for="area">Area</Label>
-          <Select default-value="billing">
-            <SelectTrigger id="area">
-              <SelectValue placeholder="Select" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="team"> Team </SelectItem>
-              <SelectItem value="billing"> Billing </SelectItem>
-              <SelectItem value="account"> Account </SelectItem>
-              <SelectItem value="deployments"> Deployments </SelectItem>
-              <SelectItem value="support"> Support </SelectItem>
-            </SelectContent>
-          </Select>
+          <UiLabel for="area">Area</UiLabel>
+          <UiSelect default-value="billing">
+            <UiSelectTrigger id="area">
+              <UiSelectValue placeholder="Select" />
+            </UiSelectTrigger>
+            <UiSelectContent>
+              <UiSelectItem value="team"> Team </UiSelectItem>
+              <UiSelectItem value="billing"> Billing </UiSelectItem>
+              <UiSelectItem value="account"> Account </UiSelectItem>
+              <UiSelectItem value="deployments"> Deployments </UiSelectItem>
+              <UiSelectItem value="support"> Support </UiSelectItem>
+            </UiSelectContent>
+          </UiSelect>
         </div>
         <div class="grid gap-2">
-          <Label for="security-level">Security Level</Label>
-          <Select default-value="2">
-            <SelectTrigger id="security-level" class="w-full truncate">
-              <SelectValue placeholder="Select level" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="1"> Severity 1 (Highest) </SelectItem>
-              <SelectItem value="2"> Severity 2 </SelectItem>
-              <SelectItem value="3"> Severity 3 </SelectItem>
-              <SelectItem value="4"> Severity 4 (Lowest) </SelectItem>
-            </SelectContent>
-          </Select>
+          <UiLabel for="security-level">Security Level</UiLabel>
+          <UiSelect default-value="2">
+            <UiSelectTrigger id="security-level" class="w-full truncate">
+              <UiSelectValue placeholder="Select level" />
+            </UiSelectTrigger>
+            <UiSelectContent>
+              <UiSelectItem value="1"> Severity 1 (Highest) </UiSelectItem>
+              <UiSelectItem value="2"> Severity 2 </UiSelectItem>
+              <UiSelectItem value="3"> Severity 3 </UiSelectItem>
+              <UiSelectItem value="4"> Severity 4 (Lowest) </UiSelectItem>
+            </UiSelectContent>
+          </UiSelect>
         </div>
       </div>
       <div class="grid gap-2">
-        <Label for="subject">Subject</Label>
-        <Input id="subject" placeholder="I need help with..." />
+        <UiLabel for="subject">Subject</UiLabel>
+        <UiInput id="subject" placeholder="I need help with..." />
       </div>
       <div class="grid gap-2">
-        <Label for="description">Description</Label>
-        <Textarea
+        <UiLabel for="description">Description</UiLabel>
+        <UiTextarea
           id="description"
           placeholder="Please include all information relevant to your issue."
         />
       </div>
-    </CardContent>
-    <CardFooter class="justify-between space-x-2">
-      <Button variant="ghost"> Cancel </Button>
-      <Button>Submit</Button>
-    </CardFooter>
-  </Card>
+    </UiCardContent>
+    <UiCardFooter class="justify-between space-x-2">
+      <UiButton variant="ghost"> Cancel </UiButton>
+      <UiButton>Submit</UiButton>
+    </UiCardFooter>
+  </UiCard>
 </template>

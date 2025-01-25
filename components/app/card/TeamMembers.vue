@@ -1,69 +1,44 @@
 <script setup lang="ts">
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from '@/components/ui/command'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
 import { ChevronDownIcon } from 'lucide-vue-next'
-
-import { ref } from 'vue'
 
 const sofiaRole = ref('Owner')
 const jacksonRole = ref('Member')
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Team Members</CardTitle>
-      <CardDescription>
+  <UiCard>
+    <UiCardHeader>
+      <UiCardTitle>Team Members</UiCardTitle>
+      <UiCardDescription>
         Invite your team members to collaborate.
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="grid gap-6">
+      </UiCardDescription>
+    </UiCardHeader>
+    <UiCardContent class="grid gap-6">
       <div class="flex items-center justify-between space-x-4">
         <div class="flex items-center space-x-4">
-          <Avatar>
-            <AvatarImage src="/avatars/01.png" />
-            <AvatarFallback>OM</AvatarFallback>
-          </Avatar>
+          <UiAvatar>
+            <UiAvatarImage src="/avatars/01.png" />
+            <UiAvatarFallback>OM</UiAvatarFallback>
+          </UiAvatar>
           <div>
             <p class="text-sm font-medium leading-none">Sofia Davis</p>
             <p class="text-sm text-muted-foreground">m@example.com</p>
           </div>
         </div>
-        <Popover>
-          <PopoverTrigger as-child>
-            <Button variant="outline" class="ml-auto">
+        <UiPopover>
+          <UiPopoverTrigger as-child>
+            <UiButton variant="outline" class="ml-auto">
               {{ sofiaRole }}
               <ChevronDownIcon class="ml-2 h-4 w-4 text-muted-foreground" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent class="p-0" align="end">
-            <Command v-model="sofiaRole">
-              <CommandInput placeholder="Select new role..." />
-              <CommandList>
-                <CommandEmpty>No roles found.</CommandEmpty>
-                <CommandGroup>
-                  <CommandItem
+            </UiButton>
+          </UiPopoverTrigger>
+          <UiPopoverContent class="p-0" align="end">
+            <UiCommand v-model="sofiaRole">
+              <UiCommandInput placeholder="Select new role..." />
+              <UiCommandList>
+                <UiCommandEmpty>No roles found.</UiCommandEmpty>
+                <UiCommandGroup>
+                  <UiCommandItem
                     value="Viewer"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -71,8 +46,8 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Can view and comment.
                     </p>
-                  </CommandItem>
-                  <CommandItem
+                  </UiCommandItem>
+                  <UiCommandItem
                     value="Developer"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -80,8 +55,8 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Can view, comment and edit.
                     </p>
-                  </CommandItem>
-                  <CommandItem
+                  </UiCommandItem>
+                  <UiCommandItem
                     value="Billing"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -89,8 +64,8 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Can view, comment and manage billing.
                     </p>
-                  </CommandItem>
-                  <CommandItem
+                  </UiCommandItem>
+                  <UiCommandItem
                     value="Owner"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -98,38 +73,38 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Admin-level access to all resources.
                     </p>
-                  </CommandItem>
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
+                  </UiCommandItem>
+                </UiCommandGroup>
+              </UiCommandList>
+            </UiCommand>
+          </UiPopoverContent>
+        </UiPopover>
       </div>
       <div class="flex items-center justify-between space-x-4">
         <div class="flex items-center space-x-4">
-          <Avatar>
-            <AvatarImage src="/avatars/02.png" />
-            <AvatarFallback>JL</AvatarFallback>
-          </Avatar>
+          <UiAvatar>
+            <UiAvatarImage src="/avatars/02.png" />
+            <UiAvatarFallback>JL</UiAvatarFallback>
+          </UiAvatar>
           <div>
             <p class="text-sm font-medium leading-none">Jackson Lee</p>
             <p class="text-sm text-muted-foreground">p@example.com</p>
           </div>
         </div>
-        <Popover>
-          <PopoverTrigger as-child>
-            <Button variant="outline" class="ml-auto">
+        <UiPopover>
+          <UiPopoverTrigger as-child>
+            <UiButton variant="outline" class="ml-auto">
               {{ jacksonRole }}
               <ChevronDownIcon class="ml-2 h-4 w-4 text-muted-foreground" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent class="p-0" align="end">
-            <Command v-model="jacksonRole">
-              <CommandInput placeholder="Select new role..." />
-              <CommandList>
-                <CommandEmpty>No roles found.</CommandEmpty>
-                <CommandGroup>
-                  <CommandItem
+            </UiButton>
+          </UiPopoverTrigger>
+          <UiPopoverContent class="p-0" align="end">
+            <UiCommand v-model="jacksonRole">
+              <UiCommandInput placeholder="Select new role..." />
+              <UiCommandList>
+                <UiCommandEmpty>No roles found.</UiCommandEmpty>
+                <UiCommandGroup>
+                  <UiCommandItem
                     value="Viewer"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -137,8 +112,8 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Can view and comment.
                     </p>
-                  </CommandItem>
-                  <CommandItem
+                  </UiCommandItem>
+                  <UiCommandItem
                     value="Developer"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -146,8 +121,8 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Can view, comment and edit.
                     </p>
-                  </CommandItem>
-                  <CommandItem
+                  </UiCommandItem>
+                  <UiCommandItem
                     value="Billing"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -155,8 +130,8 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Can view, comment and manage billing.
                     </p>
-                  </CommandItem>
-                  <CommandItem
+                  </UiCommandItem>
+                  <UiCommandItem
                     value="Owner"
                     class="flex flex-col items-start space-y-1 px-4 py-2"
                   >
@@ -164,13 +139,13 @@ const jacksonRole = ref('Member')
                     <p class="text-sm text-muted-foreground">
                       Admin-level access to all resources.
                     </p>
-                  </CommandItem>
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
+                  </UiCommandItem>
+                </UiCommandGroup>
+              </UiCommandList>
+            </UiCommand>
+          </UiPopoverContent>
+        </UiPopover>
       </div>
-    </CardContent>
-  </Card>
+    </UiCardContent>
+  </UiCard>
 </template>

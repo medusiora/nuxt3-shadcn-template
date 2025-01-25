@@ -14,9 +14,9 @@ const isDark = computed({
 </script>
 
 <template>
-  <Button variant="ghost" size="icon" @click="isDark = !isDark">
+  <UiButton variant="ghost" size="icon" @click="isDark = !isDark">
     <MoonStarIcon v-if="isDark" class="h-7 w-7" />
     <SunIcon v-else class="h-7 w-7" />
     <span class="sr-only">Toggle Color Mode</span>
-  </Button>
+  </UiButton>
 </template>
