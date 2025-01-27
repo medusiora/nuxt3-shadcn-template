@@ -1,3 +1,5 @@
+![Preview](./assets/images/preview.png)
+
 # Nuxt 3 Admin Template
 
 Welcome to the **Nuxt 3 Admin Template Starter**, an advanced and modern admin dashboard built using [Nuxt 3](https://nuxt.com/) and the [shadcn-vue](https://www.shadcn-vue.com/). This project serves as a solid foundation for creating scalable, feature-rich admin panels.
@@ -8,30 +10,13 @@ Welcome to the **Nuxt 3 Admin Template Starter**, an advanced and modern admin d
 
 ## Features
 
-- **Nuxt 3 Framework**: Leverage the power of Nuxt 3 for server-side rendering, static site generation, and hybrid rendering.
-- **shadcn-vue**: Pre-styled and highly customizable UI components for a seamless development experience.
-- **Tailwind CSS**: Fully integrated for rapid styling and responsive design.
-- **Composable Architecture**: Utilize Nuxt's composition API for modular and maintainable code.
-- **Dark Mode Support**: User-friendly light and dark themes out of the box.
-- **Dynamic Routing**: Easily add new pages and routes using Nuxt's file-based routing system.
-- **State Management**: Integrated Pinia for efficient state handling.
-- **TypeScript Ready**: Type-safe development with TypeScript support.
-
----
-
-## Customization
-
-### Tailwind Configuration
-
-Tailwind CSS can be customized via the `tailwind.config.js` file located in the root directory.
-
-### Adding Components
-
-Add new components under the `components/` directory and use them across your application. Components from `shadcn-vue` can be easily imported and customized.
-
-### State Management
-
-Use the `store/` directory to define and manage application state using Pinia.
+- [x] ✨ [shadcn-vue](https://www.shadcn-vue.com/) Re-usable components built with Radix Vue, and Tailwind CSS.
+- [x] 🌊 [@nuxtjs/tailwindcss](https://tailwindcss.nuxtjs.org/) The Tailwind CSS module for Nuxt
+- [x] 🏀 [@nuxt/icon](https://github.com/nuxt/icon) The <Icon> component, supporting Iconify, Emojis and custom components
+- [x] 🚀 [@vueuse/core](https://vueuse.org/) Collection of Vue Composition Utilities
+- [x] 🍍 [@pinia/nuxt](https://pinia.vuejs.org/) The intuitive store for Vue.js
+- [x] 📏 [@nuxt/eslint](https://eslint.nuxt.com/) All-in-one ESLint integration for Nuxt
+- [x] 🧹 [Prettier](https://prettier.io/) Code formatter
 
 ---
 
@@ -41,9 +26,10 @@ Special thanks to:
 
 - [Nuxt.js](https://nuxt.com/)
 - [shadcn-vue](https://www.shadcn-vue.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
 
 ## Setup
+
+This project using `pnpm` as dependencies management
 
 Make sure to install dependencies:
 
