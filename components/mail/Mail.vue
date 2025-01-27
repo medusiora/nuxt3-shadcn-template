@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Mail } from '@/types/mail'
+import type { Mail } from '#shared/types/mail'
 
 import { cn } from '@/lib/utils'
 import { refDebounced } from '@vueuse/core'

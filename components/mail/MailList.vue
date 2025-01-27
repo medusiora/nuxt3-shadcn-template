@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Mail } from '@/types/mail'
+import type { Mail } from '#shared/types/mail'
 import { cn } from '@/lib/utils'
 import { formatDistanceToNow } from 'date-fns'
 
@@ -8,6 +8,7 @@ interface MailListProps {
 }
 
 defineProps<MailListProps>()
+
 const selectedMail = defineModel<string>('selectedMail', { required: false })
 
 function getBadgeVariantFromLabel(label: string) {

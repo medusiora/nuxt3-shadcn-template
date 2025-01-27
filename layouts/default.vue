@@ -29,7 +29,7 @@ import {
   TableIcon,
   UserRoundCheckIcon,
 } from 'lucide-vue-next'
-import type { NavGroup } from '~/types/nav'
+import type { NavGroup } from '#shared/types/nav'
 
 // This is sample
 const user = {

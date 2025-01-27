@@ -1,7 +1,7 @@
 export interface NavItem {
   title: string
   url?: string | object
-  target?: '_blank' | '_self' | '_parent' | '_top'
+  target?: '_blank' | '_self' | '_parent' | '_top' | string
   icon?: any
   isActive?: boolean
   items?: NavItem[]
